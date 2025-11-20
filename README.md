@@ -12,6 +12,8 @@ Here's an editor for the error page. You can try this out [here](https://virt.mo
 
 ## Quickstart for Programmers
 
+### Python
+
 Install `cloudflare-error-page` with pip.
 
 ``` Bash
@@ -58,6 +60,18 @@ webbrowser.open('error.html')
 
 You can also see this example [here](https://virt.moe/cloudflare-error-page/examples/default).
 
+### Node.js
+
+``` JavaScript
+// Coming soon!
+```
+
+### PHP
+
+``` PHP
+// Coming soon!
+```
+
 ## More Examples
 
 ### Catastrophic infrastructure failure
@@ -95,7 +109,7 @@ params = {
 
 ![Catastrophic infrastructure failure](https://github.com/donlon/cloudflare-error-page/blob/images/example.png?raw=true)
 
-[link](https://virt.moe/cloudflare-error-page/examples/catastrophic).
+[Link](https://virt.moe/cloudflare-error-page/examples/catastrophic)
 
 ### Web server is working
 
@@ -127,7 +141,7 @@ params = {
 
 ![Web server is working](https://github.com/donlon/cloudflare-error-page/blob/images/example2.png?raw=true)
 
-[link](https://virt.moe/cloudflare-error-page/examples/working).
+[Link](https://virt.moe/cloudflare-error-page/examples/working)
 
 
 ### Using Flask server
