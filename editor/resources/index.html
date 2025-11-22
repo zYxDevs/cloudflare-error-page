@@ -64,6 +64,7 @@
         "more_information": {
           "hidden": false,
           "text": "cloudflare.com",
+          "for": "more information",
         },
         "browser_status": {
           "status": "ok",
@@ -97,6 +98,9 @@
         "catastrophic": {
           "title": "Catastrophic infrastructure failure",
           "error_code": '500',
+          "more_information": {
+            "for": "no information",
+          },
           "browser_status": {
             "status": "error",
             "status_text": "Out of Memory"
@@ -215,6 +219,7 @@
         $('more_hidden').checked = !!(cfg.more_information && cfg.more_information.hidden);
         $('more_text').value = cfg.more_information?.text ?? '';
         $('more_link').value = cfg.more_information?.link ?? '';
+        $('more_for').value = cfg.more_information?.for ?? '';
 
         $('browser_status').value = cfg.browser_status?.status ?? 'ok';
         $('browser_location').value = cfg.browser_status?.location ?? '';
@@ -250,7 +255,8 @@
           more_information: {
             hidden: !!$('more_hidden').checked,
             text: $('more_text').value,
-            link: $('more_link').value
+            link: $('more_link').value,
+            for: $('more_for').value
           },
           browser_status: {
             status: $('browser_status').value,
@@ -738,31 +744,33 @@
             </div>
           </div>
 
-          <div class="mt-3 mb-3">
-            <h6 class="mb-2">Visit ... for more information</h6>
-
-            <div class="status-block">
-              <div class="form-row">
-                <label>Hidden</label>
-                <div class="control d-flex align-items-center gap-2">
-                  <input id="more_hidden" class="form-check-input" type="checkbox" />
-                  <!-- <small class="text-muted">If checked, the "visit ..." line is hidden</small> -->
-                </div>
+          <div class="status-block mt-3 mb-3">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <strong>Visit ...</strong>
+              <div>
+                <input id="more_hidden" class="form-check-input" type="checkbox" />
+                <label for="more_hidden" class="ms-1 small">Hidden</label>
               </div>
+            </div>
 
-              <div class="form-row">
-                <label for="more_text">Text</label>
-                <div class="control">
-                  <input id="more_text" class="form-control form-control-sm" placeholder="cloudflare.com" />
-                </div>
+            <div class="form-row">
+              <label for="more_text">Text</label>
+              <div class="control">
+                <input id="more_text" class="form-control form-control-sm" placeholder="cloudflare.com" />
               </div>
+            </div>
 
-              <div class="form-row">
-                <label for="more_link">Link</label>
-                <div class="control">
-                  <input id="more_link" class="form-control form-control-sm"
-                    placeholder="https://www.cloudflare.com/" />
-                </div>
+            <div class="form-row">
+              <label for="more_link">Link</label>
+              <div class="control">
+                <input id="more_link" class="form-control form-control-sm" placeholder="https://www.cloudflare.com/" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="more_for">For</label>
+              <div class="control">
+                <input id="more_for" class="form-control form-control-sm" placeholder="more information" />
               </div>
             </div>
           </div>

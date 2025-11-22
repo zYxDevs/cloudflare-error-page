@@ -81,6 +81,9 @@ A demo server using Flask is also available in [flask_demo.py](examples/flask_de
 ``` JavaScript
 params = {
     "title": "Catastrophic infrastructure failure",
+    "more_information": {
+        "for": "no information",
+    },
     "browser_status": {
         "status": "error",
         "status_text": "Out of Memory",
@@ -151,6 +154,7 @@ params = {
         "hidden": false,
         "text": "cloudflare.com", 
         "link": "https://www.cloudflare.com/",
+        "for": "more information",
     },
 
     // Configuration for the Browser/Cloudflare/Host status

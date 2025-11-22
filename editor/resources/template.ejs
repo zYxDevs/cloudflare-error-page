@@ -31,7 +31,7 @@ let html_title_output = params.html_title || (error_code + ': ' + title);
             <% let more_info = params.more_information || {}; %>
             <% if (!more_info.hidden) { %>
             <div>
-                Visit <a href="<%= more_info.link || 'https://www.cloudflare.com/' %>" target="_blank" rel="noopener noreferrer"><%= more_info.text || 'cloudflare.com' %></a> for more information.
+                Visit <a href="<%= more_info.link || 'https://www.cloudflare.com/' %>" target="_blank" rel="noopener noreferrer"><%= more_info.text || 'cloudflare.com' %></a> for <%= more_info.for || "more information" %>.
             </div>
             <% } %>
             <div class="<%= more_info.hidden ? '' : 'mt-3' %>"><%= params.time %></div>

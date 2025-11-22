@@ -1,5 +1,8 @@
 {
     "title": "Catastrophic infrastructure failure",
+    "more_information": {
+        "for": "no information"
+    },
     "browser_status": {
         "status": "error",
         "status_text": "Out of Memory"
