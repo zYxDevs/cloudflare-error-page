@@ -113,7 +113,7 @@ def get(name: str):
         params['creator_info'] = {
             'hidden': False,
             'text': 'CF Error Page Editor',
-            'link': f'https://virt.moe/cloudflare-error-page/editor/#from={name}',
+            'link': request.host_url[:-1] + url_for('editor.index') + f'#from={name}',
         }
         # Always escape HTML
         params['what_happened'] = html.escape(params.get('what_happened', '')) # TODO: common render function?

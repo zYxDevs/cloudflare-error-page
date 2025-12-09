@@ -28,8 +28,8 @@
 
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <script src="https://cdn.jsdelivr.net/npm/ejs@3.1.10/ejs.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://virt.moe/assets/cloudflare-error-page/ejs.min.js"></script>
+  <link href="https://virt.moe/assets/cloudflare-error-page/bootstrap.min.css" rel="stylesheet">
 
   <script>
     (async function () {
@@ -331,6 +331,8 @@
         doc.write(pageHtml);
         doc.close();
 
+        updateStatusBlockStyles();
+
         // store last rendered HTML for "open in new tab"
         lastRenderedHtml = pageHtml;
       }
@@ -426,7 +428,6 @@
           inp.addEventListener('input', debounce(() => {
             // Update status block color classes for quick visual feedback in the editor
             render();
-            updateStatusBlockStyles();
           }, 200));
           // for radio change events (error_source)
           if (inp.type === 'radio') inp.addEventListener('change', () => { render(); });
@@ -595,7 +596,7 @@
         <div class="form-row mb-3">
           <label for="presetSelect">Preset</label>
           <select id="presetSelect" class="form-select form-select-sm">
-            <option value="default">Default</option>
+            <option value="default">Internal server error (Default)</option>
             <option value="empty">Empty</option>
             <option value="catastrophic">Catastrophic failure</option>
             <option value="working">Server working</option>
@@ -838,10 +839,10 @@
           </div>
 
           <div class="mt-2 text-center">&gt;&gt; Star this project on
-            <a href="https://github.com/donlon/cloudflare-error-page" target="_blank">Github</a> ⭐
+            <a href="https://github.com/donlon/cloudflare-error-page" target="_blank">GitHub</a> ⭐
           </div>
 
-          <div class="mt-2" style="font-size: 0.9em;">You can also embed the error page into your own website. See
+          <div class="mt-2" style="font-size: 0.9em;">You can also embed this error page into your own website. See
             <a href="https://github.com/donlon/cloudflare-error-page#quickstart-for-programmers"
               target="_blank">Quickstart</a> in the
             homepage for steps.
@@ -862,10 +863,5 @@
 
     </div>
   </div>
-
-  <!-- JS: Bootstrap bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
-
 </html>

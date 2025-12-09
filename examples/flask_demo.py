@@ -18,10 +18,10 @@ from cloudflare_error_page import get_resources_folder, render as render_cf_erro
 
 app = Flask(__name__)
 
-# You can **use resources from Cloudflare CDN. But in case of changing, you can set use_cdn = False to use bundled resources.
+# Resources required for the error page can be loaded from Cloudflare CDN. But in case of changes, you can set use_cdn = False to use bundled resources.
 use_cdn = True
 
-if use_cdn:
+if not use_cdn:
     res_folder = get_resources_folder()
 
     # This handler is used to provide stylesheet and icon resources for the error page. If you pass use_cdn=True to render_cf_error_page
@@ -52,10 +52,10 @@ def index():
         "what_can_i_do": "<p>Please try again in a few minutes.</p>"
     }
 
-    # Get real Ray ID from Cloudflare header
+    # Get the real Ray ID from Cloudflare header
     ray_id = request.headers.get('Cf-Ray', '')[:16]
 
-    # Get real client ip from Cloudflare header or request.remote_addr
+    # Get the real client ip from Cloudflare header or request.remote_addr
     client_ip = request.headers.get('X-Forwarded-For')
     if not client_ip:
         client_ip = request.remote_addr
@@ -70,13 +70,7 @@ def index():
 
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        host = sys.argv[1]
-    else:
-        host = None
-    if len(sys.argv) > 2:
-        port = int(sys.argv[2])
-    else:
-        port = None
+    host = sys.argv[1] if len(sys.argv) > 1 else None
+    port = int(sys.argv[2]) if len(sys.argv) > 2 else None
     
     app.run(debug=True, host=host, port=port)

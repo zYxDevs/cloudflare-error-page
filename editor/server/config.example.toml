@@ -7,7 +7,7 @@ BEHIND_PROXY = true
 # Some random secret, will be auto-generated if empty
 SECRET_KEY = ''
 
-# Main database URL
+# Main database URI
 SQLALCHEMY_DATABASE_URI = 'sqlite:///database.db'
 
 # Rate limit storage for Flask-Limiter
