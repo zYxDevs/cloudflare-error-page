@@ -1,7 +1,7 @@
 import html
 import secrets
 from datetime import datetime, timezone
-from typing import Any, Optional
+from typing import Any
 
 from jinja2 import Environment, PackageLoader, Template, select_autoescape
 
@@ -17,7 +17,7 @@ default_template: Template = env.get_template("error.html")
 
 def render(params: dict,
            allow_html: bool = True,
-           template: Optional[Template] = None,
+           template: Template | None = None,
            *args: Any,
            **kwargs: Any) -> str:
     '''Render a customized Cloudflare error page.

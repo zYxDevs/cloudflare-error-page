@@ -4,12 +4,12 @@ build-backend = "hatchling.build"
 
 [project]
 name = "cloudflare-error-page"
-version = "0.0.1"
+version = "0.1.0"
 description = "A customizable Cloudflare error page generator"
 authors = [{ name = "Anthony Donlon" }]
 license = { text = "MIT" }
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 dependencies = [
     "jinja2>=3.0"
 ]
