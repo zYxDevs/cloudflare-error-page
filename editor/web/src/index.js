@@ -305,10 +305,8 @@ function render() {
 let lastRenderedHtml = '';
 function openInNewTab() {
   if (!lastRenderedHtml) render();
-  const blob = new Blob([lastRenderedHtml], { type: 'text/html' });
-  const url = URL.createObjectURL(blob);
-  window.open(url, '_blank', 'noopener');
-  // note that this url won't be revoked
+  const wnd = window.open()
+  wnd.document.documentElement.innerHTML = lastRenderedHtml
 }
 
 function createShareableLink() {
