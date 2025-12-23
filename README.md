@@ -8,7 +8,7 @@ This project creates customized error pages that mimics the well-known Cloudflar
 
 ## Online Editor
 
-Here's an online editor to create customized error pages. Try it out [here](https://virt.moe/cferr/editor/).
+Here's an online editor to create customized error pages and example server apps. Try it out [here](https://virt.moe/cferr/editor/).
 
 ![Editor](https://github.com/donlon/cloudflare-error-page/blob/images/editor.png?raw=true)
 

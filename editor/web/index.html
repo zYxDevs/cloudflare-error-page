@@ -173,7 +173,7 @@
       max-height: 1200px !important;
       font-family: monospace;
       font-size: 0.8em !important;
-      overflow: auto;
+      overflow: hidden;
     }
 
     .save-as-dialog__buttons {
@@ -475,7 +475,7 @@
             <button type="button" id="btnOpen" class="btn btn-sm btn-primary">Preview in new tab</button>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#saveAsDialog">
-              Save as...
+              Save as & Examples ...
             </button>
           </div>
 
@@ -547,7 +547,9 @@
                 Save
               </button>
             </div>
-            <pre id="saveAsDialogCode" class="border px-2 py-1 save-as-dialog__code"></pre>
+            <div class="border rounded save-as-dialog__code">
+              <pre id="saveAsDialogCode" class="px-2 py-1 h-100"></pre>
+            </div>
           </div>
         </div>
       </div>

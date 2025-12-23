@@ -52,7 +52,9 @@ export interface ErrorPageParams {
 }
 
 // Load EJS template
-export const baseTemplate: ejs.TemplateFunction = ejs.compile(templateString);
+export const baseTemplate: ejs.TemplateFunction = ejs.compile(templateString, {
+  rmWhitespace: true
+});
 
 /**
  * Generate random hex string for ray-id

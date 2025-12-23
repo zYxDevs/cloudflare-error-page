@@ -431,6 +431,7 @@ function updateSaveAsDialog(e) {
   }
   const params = { ...lastCfg };
   delete params.time;
+  delete params.ray_id;
   let language;
   if (codegen) {
     saveAsContent = codegen.generate(params);
@@ -445,6 +446,7 @@ function updateSaveAsDialog(e) {
   const html = Prism.highlight(saveAsContent, Prism.languages[language], language);
 
   $('saveAsDialogCode').innerHTML = html;
+  $('saveAsDialogCode').scrollTop = 0;
 
   document.querySelectorAll('#saveAsDialogTypes button').forEach((element) => {
     const isCurrent = element.dataset.type == saveAsType;
