@@ -103,6 +103,31 @@ const PRESETS = {
     what_happened: 'This site is still working. And it looks great.',
     what_can_i_do: 'Visit the site before it crashes someday.',
   },
+  teapot: {
+    title: "I'm a teapot",
+    error_code: '418',
+    more_information: {
+      text: 'rfc2324',
+      link: 'https://www.rfc-editor.org/rfc/rfc2324',
+    },
+    browser_status: {
+      status: 'ok',
+      location: 'You',
+      status_text: 'Working',
+    },
+    cloudflare_status: {
+      status: 'ok',
+      status_text: 'Working',
+    },
+    host_status: {
+      status: 'ok',
+      location: 'Teapot',
+      status_text: 'Working',
+    },
+    error_source: 'host',
+    what_happened: "The server can not brew coffee for it is a teapot.",
+    what_can_i_do: 'Please try a different coffee machine.',
+  },
   consensual: {
     title: 'The Myth Of "Consensual" Internet',
     error_code: 'lmao',
