@@ -8,7 +8,7 @@ This project creates customized error pages that mimic the well-known Cloudflare
 
 ## Online Editor
 
-Here's an online editor to create customized error pages and example server apps. Try it out [here](https://virt.moe/cferr/editor/).
+Here's an online editor to create customized error pages and example server apps. Try it out [here](https://magicalforest.io/cferr/editor/).
 
 ![Editor](https://github.com/donlon/cloudflare-error-page/blob/images/editor.png?raw=true)
 
@@ -64,7 +64,7 @@ with open('error.html', 'w') as f:
 webbrowser.open('error.html')
 ```
 
-You can also see live demo [here](https://virt.moe/cferr/examples/default).
+You can also see live demo [here](https://magicalforest.io/cferr/examples/default).
 
 A demo server using Flask is also available in [flask_demo.py](examples/flask_demo.py).
 
@@ -144,7 +144,7 @@ params = {
 
 ![Catastrophic infrastructure failure](https://github.com/donlon/cloudflare-error-page/blob/images/example.png?raw=true)
 
-[Demo](https://virt.moe/cferr/examples/catastrophic)
+[Demo](https://magicalforest.io/cferr/examples/catastrophic)
 
 ### Web server is working
 
@@ -176,7 +176,7 @@ params = {
 
 ![Web server is working](https://github.com/donlon/cloudflare-error-page/blob/images/example2.png?raw=true)
 
-[Demo](https://virt.moe/cferr/examples/working)
+[Demo](https://magicalforest.io/cferr/examples/working)
 
 ## FAQ
 

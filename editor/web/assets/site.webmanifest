@@ -5,7 +5,7 @@
     "lang": "en",
     "icons": [
         {
-            "src": "/assets/icon-ok-large-white.png",
+            "src": "./icon-ok-large-white.png",
             "sizes": "500x500",
             "type": "image/png"
         }

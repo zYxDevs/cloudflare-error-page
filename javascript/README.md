@@ -139,4 +139,4 @@ MIT
 ## Related
 
 - [Python version](https://github.com/donlon/cloudflare-error-page)
-- [Online Editor](https://virt.moe/cloudflare-error-page/editor/)
+- [Online Editor](https://magicalforest.io/cloudflare-error-page/editor/)

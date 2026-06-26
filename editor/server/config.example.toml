@@ -12,13 +12,13 @@ SHARE_LINK_DIGITS = 7
 SHORT_SHARE_URL = false
 
 # Icon URL for rendered pages
-PAGE_ICON_URL = 'https://virt.moe/cferr/editor/assets/icon-{status}-32x32.png'
+PAGE_ICON_URL = 'https://magicalforest.io/cferr/editor/assets/icon-{status}-32x32.png'
 
 # MIME type of page icon
 PAGE_ICON_TYPE = 'image/png'
 
 # Image URL for rendered pages
-PAGE_IMAGE_URL = 'https://virt.moe/cferr/editor/assets/icon-{status}-large-white.png'
+PAGE_IMAGE_URL = 'https://magicalforest.io/cferr/editor/assets/icon-{status}-large-white.png'
 
 # Set to true if trust X-Forwarded-For/X-Forwarded-Proto header
 BEHIND_PROXY = true
