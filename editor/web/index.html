@@ -34,29 +34,74 @@
 
   <script type="module" src="src/index.js"></script>
   <style>
+    /* ===== Design tokens ===== */
+    :root {
+      --accent: #0d6efd;
+      --accent-600: #0b5ed7;
+      --accent-soft: rgba(13, 110, 253, .15);
+      --bg: #eef1f5;
+      --bg-grad: #eef1f5;
+      --panel: #ffffff;
+      --border: #e3e7ee;
+      --border-strong: #d4dae3;
+      --text: #1f2733;
+      --muted: #6b7480;
+      --ok: #16a34a;
+      --ok-soft: #f1fbf5;
+      --ok-border: #cdebd7;
+      --err: #dc2626;
+      --err-soft: #fef5f4;
+      --err-border: #f7cfcb;
+      --radius: 10px;
+      --radius-sm: 7px;
+      --shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 6px 18px rgba(16, 24, 40, .06);
+      --shadow-sm: 0 1px 2px rgba(16, 24, 40, .06);
+
+      --bs-primary: var(--accent);
+      --bs-primary-rgb: 13, 110, 253;
+      --bs-link-color-rgb: 13, 110, 253;
+      --bs-link-hover-color-rgb: 10, 88, 202;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      background: var(--bg-grad);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
     /* Layout: editor + preview */
     /* On small screens use stacked layout: editor then iframe */
     .app {
       display: flex;
       flex-direction: column;
-      gap: 0.8rem;
+      gap: .8rem;
       height: 100%;
       padding-top: .5rem;
       padding-bottom: .5rem;
     }
 
-    .editor {
-      overflow: auto;
+    /* Panels */
+    .editor,
+    .preview {
+      background: var(--panel);
+      border: 1px solid var(--border) !important;
+      border-radius: var(--radius) !important;
+      box-shadow: var(--shadow);
+      overflow: hidden;
     }
 
     .editor-scroll {
       height: 100%;
-      overflow-y: scroll;
+      overflow-y: auto;
       padding: .8rem;
-    }
-
-    .preview {
-      overflow: auto;
     }
 
     /* iframe styling */
@@ -65,6 +110,8 @@
       width: 100%;
       height: var(--expanded-height);
       flex: 1 1 auto;
+      border: 0 !important;
+      background: #fff;
     }
 
     /* On md and up, arrange horizontally: editor left, preview right */
@@ -91,55 +138,205 @@
       }
     }
 
+    /* ===== App header ===== */
+    .app-header {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      margin-left: .3rem;
+      margin-bottom: .7rem;
+    }
+
+    .app-header__icon {
+      width: 28px;
+      height: 28px;
+      margin-right: 6px;
+      box-sizing: content-box;
+      background: url(assets/cloud-ok-icon.svg) no-repeat left center;
+      background-origin: content-box;
+      background-size: contain;
+    }
+
+    .app-header__title {
+      display: flex;
+      align-items: center;
+      font-size: 1.12rem;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .app-header__subtitle {
+      font-size: .82rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* ===== Section headings ===== */
+    .section-title {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--muted);
+      margin: 0 0 .7rem;
+    }
+
+    .editor-scroll hr {
+      border: 0;
+      border-top: 1px solid var(--border);
+      opacity: 1;
+      margin: .8rem 0;
+    }
+
+    /* ===== Forms ===== */
     /* Compact form: label and control same row */
     .form-row {
       display: flex;
       align-items: center;
-      margin-bottom: .6rem;
+      margin-bottom: .4rem;
+      gap: .5rem;
     }
 
     .form-row>label {
-      min-width: 6rem;
+      min-width: 6.5rem;
       max-width: 12rem;
       margin-bottom: 0;
-      font-weight: 600;
+      font-weight: 500;
+      font-size: .85rem;
+      color: var(--muted);
     }
 
     .form-row>.control {
       flex: 1;
     }
 
-    /* Status block styling */
+    body .form-control,
+    body .form-select {
+      border-color: var(--border-strong);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+
+    .form-control::placeholder {
+      color: #aab1bb;
+    }
+
+    body .form-control:focus,
+    body .form-select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 .2rem var(--accent-soft);
+    }
+
+    body .form-check-input:checked {
+      background-color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    body .form-check-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 .2rem var(--accent-soft);
+    }
+
+    /* ===== Status blocks ===== */
     .status-block {
-      border: 1px solid #cfeadd;
-      border-radius: .375rem;
-      padding: .75rem;
+      position: relative;
+      border: 1px solid var(--border) !important;
+      border-radius: var(--radius-sm) !important;
+      padding: .6rem .7rem;
       margin-bottom: .5rem;
+      background: #fafbfc;
+      transition: background .15s ease, border-color .15s ease;
+    }
+
+    .status-block>.d-flex strong {
+      font-size: .9rem;
+    }
+
+    .status-block .small {
+      color: var(--muted);
     }
 
     .status-ok {
-      background: #e9f7ef;
-      border: 1px solid #cfeadd;
+      background: var(--ok-soft);
+      border-color: var(--ok-border) !important;
     }
 
     .status-error {
-      background: #fff5f5;
-      border: 1px solid #f3c2c2;
+      background: var(--err-soft);
+      border-color: var(--err-border) !important;
     }
 
-    /* Controls toolbar */
-    .toolbar {
+    /* status dot before the title */
+    .status-ok>.d-flex strong::before,
+    .status-error>.d-flex strong::before {
+      content: "";
+      display: inline-block;
+      width: .55rem;
+      height: .55rem;
+      border-radius: 50%;
+      margin-right: .45rem;
+      vertical-align: middle;
+    }
+
+    .status-ok>.d-flex strong::before {
+      background: var(--ok);
+    }
+
+    .status-error>.d-flex strong::before {
+      background: var(--err);
+    }
+
+    /* ===== Buttons ===== */
+    .btn {
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+    }
+
+    a {
+      color: var(--accent-600);
+      text-decoration-color: rgba(226, 113, 12, .35);
+      text-underline-offset: 2px;
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    /* ===== Preview header ===== */
+    .preview-header {
       display: flex;
-      gap: .5rem;
       align-items: center;
-      justify-content: space-between;
-      margin-bottom: .75rem;
+      gap: .5rem;
+      padding: .55rem 1rem;
+      margin: 0;
+      border-bottom: 1px solid var(--border);
+      background: #fbfcfd;
+      font-size: .8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--muted);
     }
 
     /* Compact textarea resizing */
     textarea.compact {
       min-height: 80px;
       resize: vertical;
+    }
+
+    /* ===== Modals & list group ===== */
+    .modal-content {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 20px 60px rgba(16, 24, 40, .25);
+    }
+
+    .footer-note {
+      font-size: .85rem;
+      color: var(--muted);
     }
 
     .popover {
@@ -225,7 +422,14 @@
       <!-- Editor column -->
       <div class="editor border rounded">
         <div class="editor-scroll">
-          <h5 class="form-row">Cloudflare Error Page Editor</h5>
+          <div class="app-header">
+            <div>
+              <h1 class="app-header__title">
+                <span class="app-header__icon" aria-hidden="true"></span>
+                Cloudflare Error Page Editor</h1>
+              <p class="app-header__subtitle">Bring premium downtime experience to your website.</p>
+            </div>
+          </div>
           <hr>
           <div class="form-row mb-3">
             <label for="presetSelect">Preset</label>
@@ -263,7 +467,7 @@
 
             <!-- Status blocks -->
             <div class="mb-3">
-              <h6 class="mb-2">Status</h6>
+              <h6 class="section-title">Status</h6>
 
               <!-- Browser -->
               <div id="block_browser" class="status-block status-ok">
@@ -400,7 +604,7 @@
               </div>
             </div>
 
-            <div class="status-block mt-3 mb-3">
+            <div class="status-block mt-3 mb-2">
               <div class="d-flex justify-content-between align-items-start mb-2">
                 <strong>Visit ...</strong>
                 <div>
@@ -434,15 +638,13 @@
               </div>
             </div>
 
-            <label for="what_happened" class="fw-semibold">What happened?</label>
-            <div class="control">
+            <label for="what_happened" class="section-title mb-1">What happened?</label>
+            <div class="control mb-2">
               <textarea id="what_happened" class="form-control compact"
                 placeholder="There is an internal server error on Cloudflare's network."></textarea>
             </div>
-            <!-- </div> -->
 
-            <!-- <div class=""> -->
-            <label for="what_can_i_do" class="fw-semibold mt-2">What can I do?</label>
+            <label for="what_can_i_do" class="section-title mb-1">What can I do?</label>
             <div class="control">
               <textarea id="what_can_i_do" class="form-control compact"
                 placeholder="Please try again in a few minutes."></textarea>
@@ -450,7 +652,7 @@
 
             <hr>
 
-            <h6 class="form-row">Performance & security by ...</h6>
+            <h6 class="section-title">Performance &amp; security by ...</h6>
 
             <div class="form-row">
               <label for="perf_text">Text</label>
@@ -486,11 +688,9 @@
               </div>
             </div>
 
-            <div class="mt-2 text-center">&gt;&gt; Star this project on
-              <a href="https://github.com/donlon/cloudflare-error-page" target="_blank">GitHub</a> ⭐
-            </div>
+            <hr>
 
-            <div class="mt-2" style="font-size: 0.9em;">You can also embed this error page into your own website. See
+            <div class="mt-2 footer-note">You can also embed this error page into your own website. See
               <a href="https://github.com/donlon/cloudflare-error-page#quickstart-for-programmers"
                 target="_blank">Quickstart</a> in the
               homepage for steps.
@@ -502,10 +702,10 @@
 
       <!-- Preview column -->
       <div class="preview border rounded">
-        <h6 style="margin: .7rem;"><strong>Preview</strong></h6>
+        <div class="preview-header">Live Preview</div>
 
         <!-- TODO: An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. -->
-        <iframe id="previewFrame" class="preview-frame border-top" sandbox="allow-scripts allow-same-origin"></iframe>
+        <iframe id="previewFrame" class="preview-frame" sandbox="allow-scripts allow-same-origin"></iframe>
       </div>
     </div>
   </div>
@@ -556,7 +756,7 @@
               </button>
             </div>
             <div class="d-flex gap-1 save-as-dialog__buttons">
-              <button type="button" class="btn btn-success" id="saveAsDialogCopyBtn" data-bs-toggle="popover"
+              <button type="button" class="btn btn-outline-primary" id="saveAsDialogCopyBtn" data-bs-toggle="popover"
                 data-bs-placement="right" data-bs-trigger="manual" data-bs-content="Copied">
                 Copy
               </button>
