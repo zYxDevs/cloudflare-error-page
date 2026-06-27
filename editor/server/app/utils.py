@@ -29,7 +29,7 @@ template = env.from_string("""{% extends base %}
 {% endif %}
 
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="moe::virt" />
+<meta property="og:site_name" content="{{ page_site_name }}" />
 <meta property="og:title" content="{{ html_title }}" />
 <meta property="og:url" content="{{ page_url }}" />
 <meta property="og:description" content="{{ page_description }}" />
@@ -38,7 +38,7 @@ template = env.from_string("""{% extends base %}
 {% endif %}
 
 <meta property="twitter:card" content="summary" />
-<meta property="twitter:site" content="moe::virt" />
+<meta property="twitter:site" content="{{ page_site_name }}" />
 <meta property="twitter:title" content="{{ html_title }}" />
 <meta property="twitter:description" content="{{ page_description }}" />
 {% if page_image_url %}
@@ -130,6 +130,7 @@ def render_extended_template(params: ErrorPageParams, *args: Any, **kwargs: Any)
         if cf_status == 'error':
             status = 'error'
     page_icon_url = current_app.config.get('PAGE_ICON_URL', '').replace('{status}', status)
+    page_site_name = current_app.config.get('PAGE_SITE_NAME', '')
     page_icon_type = current_app.config.get('PAGE_ICON_TYPE')
     page_image_url = current_app.config.get('PAGE_IMAGE_URL', '').replace('{status}', status)
     return render_cf_error_page(
@@ -138,6 +139,7 @@ def render_extended_template(params: ErrorPageParams, *args: Any, **kwargs: Any)
         base=base_template,
         page_icon_url=page_icon_url,
         page_icon_type=page_icon_type,
+        page_site_name=page_site_name,
         page_url=request.url,
         page_description=description,
         page_image_url=page_image_url,

@@ -20,6 +20,9 @@ PAGE_ICON_TYPE = 'image/png'
 # Image URL for rendered pages
 PAGE_IMAGE_URL = 'https://magicalforest.io/cferr/editor/assets/icon-{status}-large-white.png'
 
+# Site name in meta data
+PAGE_SITE_NAME = 'magicalforest.io'
+
 # Set to true if trust X-Forwarded-For/X-Forwarded-Proto header
 BEHIND_PROXY = true
 
